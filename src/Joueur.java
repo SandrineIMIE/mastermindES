@@ -25,7 +25,10 @@ public class Joueur extends User {
 		this.prenom=prenom;
 		this.mail=mail;
 		this.password=password;
-		creerJoueur();
+		if (creerJoueur()==true)
+		System.out.println("Le compte "+ login +"a été crée");
+		else {
+		System.out.println("Le compte n'a pas été crée");}
 	}
 	
 	/**

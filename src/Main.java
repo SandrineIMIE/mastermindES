@@ -37,7 +37,7 @@ public static void main(String[] args) {
 					break;
 				case 2 :/*je crée un compte*/
 					System.out.println(" Creér un compter");
-					String noms, prenoms, mails,loginS,  mdps;
+					String noms, prenoms, mails,logins,  mdps;
 					Scanner sc1 = new Scanner(System.in);
 					System.out.println("Nom : ");
 					noms = sc1.nextLine();
@@ -46,10 +46,10 @@ public static void main(String[] args) {
 					System.out.println("Email : ");
 					mails = sc1.nextLine();
 					System.out.println("Login : ");
-					loginS = sc1.nextLine();
+					logins = sc1.nextLine();
 					System.out.println("Mot de Passe : ");
 					mdps = sc1.nextLine();
-					Joueur nouveau = new Joueur(noms, prenoms, mails,loginS, mdps);
+					Joueur nouveau = new Joueur(noms, prenoms, mails,logins, mdps);
 					break;
 				case 3 :/*je me connecte*/
 					Joueur j = new Joueur();
