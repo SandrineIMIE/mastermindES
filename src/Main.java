@@ -31,7 +31,7 @@ public static void main(String[] args) {
 				switch(choix) {
 				case 1:/*je suis invite*/
 					Invite inv = new Invite();
-					System.out.println("**** Jouer comme un invite****");					
+					System.out.println("**** Jouer en tant que "+ inv.getLogin()+ " ****");				
 					Plateau inviter = new Plateau (4, 15);	
 					inviter.jouerP();
 					break;
@@ -54,9 +54,11 @@ public static void main(String[] args) {
 				case 3 :/*je me connecte*/
 					Joueur j = new Joueur();
 					if(j.verifierIdentifiants())	
-					{System.out.println("**** Jouer en tant que Joueur ****");
-					Plateau joueur= new Plateau (4, 30);	
-					joueur.jouerP();}
+					{
+						System.out.println("**** Jouer en tant que "+ j.getLogin()+ " ****");
+						Plateau joueur= new Plateau (4, 30);	
+						joueur.jouerP();
+					}
 						else	
 							System.out.println(" Erreur de saisie recommencez !");
 					break;

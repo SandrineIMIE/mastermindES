@@ -1,4 +1,6 @@
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -6,6 +8,7 @@ public class Plateau {
 	//**Attributs**//
 		private int nb=4;/*nb de pion dans le plateau**/
 		private int nbcoup=20;/*nb de coup dans le plateau*/	
+		/*private int idcombi;*/
 		private Pion[] combinaison = new Pion[nb];
 		private Pion[] copieCombinaison = new Pion[nb];
 		private Pion[] proposition = new Pion[nb];
@@ -40,8 +43,8 @@ public class Plateau {
 			combinaison= aleatoireCombi();
 			copieCombinaison= recopieCombie(combinaison);
 			System.out.println("Les régles du jeu sont simples. \n"
-					+ "Vous devez trouver une combinaison mystére de" +nb + "chiffres dans le bon ordre. \n"
-					+ "Vous avez le droit à "+nbcoup +"tentatives maximum. \n"
+					+ "Vous devez trouver une combinaison mystére de " +nb + " chiffres dans le bon ordre. \n"
+					+ "Vous avez le droit à "+nbcoup +" tentatives maximum. \n"
 					+ "Chaque chiffre est compris entre 1 et 8. Vous pouvez taper le chiffre 0 si vous souhaitez abandonner.\n"
 					+ " \nBon jeu !\n");
 		}
@@ -126,8 +129,36 @@ public class Plateau {
 					System.out.println("|");*/
 				}
 				return combi;
+			
+		}
+		/*enregistrer un combinaison dans la BDD*/
+		/*public boolean enregistrerCombi(){
+		boolean res = false;
+		String query = "INSERT INTO combinaisong (gagnant_c0, gagnant_c1, gagnant_c2, gagnant_c3) VALUES (?,?,?,?) RETURNING id_joueur;";
+		try {
+			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			prepare.setString(1, gagnant_c0);
+			prepare.setString(2, gagnant_c0);
+			prepare.setString(3, gagnant_c0);
+			prepare.setString(4, gagnant_c0);
+			
+			//On execute la requete
+			prepare.execute();
+				
+			//Si la requete s'est bien passee, on recupere le id_joueur qui a ete genere
+			ResultSet result = prepare.getResultSet();
+			if(result.first())
+			{
+				idcombi = result.getInt("id_combi");
+				res = true;
 			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
+		return res;
+		}*/
 		/*afficher combi*/
 		public void  infoCombinaison(){
 			System.out.println("|");
@@ -307,16 +338,5 @@ public class Plateau {
 			else 
 				return false;
 		}
-		
-		/**Premier menu premier (invite/connexion/créer)**/
-		/** menu **/
-		
-		/*connecter invité*/
-	    /*  ResultSet result = state.executeQuery(query);*/
-		/* resultMeta.getColumnCount(1)*/
-		/* resultMeta.getColumnName(1)*/
-	      
-		/*se connecter*/
-		 
-		/*creer un compte*/
+
 }
